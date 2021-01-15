@@ -1,0 +1,45 @@
+const Home = require('../database');
+
+const getAll = (callback) => {
+  Home.find({}, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+const getNearby = (callback) => {
+  Home.find({}, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+    }
+  }).sort({ price: -1 }).limit(16);
+};
+
+const getSimilar = (callback) => {
+  Home.find({}, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+    }
+  }).sort({ price: 1 }).limit(16);
+};
+
+const toggleOnLike = (id, callback) => {
+  Home.updateOne({ _id: id }, { liked: true }, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+module.exports = {
+  getAll, getNearby, getSimilar, toggleOnLike,
+};

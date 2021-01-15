@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/home', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const sizeSchema = new mongoose.Schema({
   beds: Number,
@@ -28,6 +28,7 @@ const homeSchema = new mongoose.Schema({
     type: addressSchema,
     default: {},
   },
+  realtor: String,
 });
 
 const Home = mongoose.model('Home', homeSchema);
