@@ -18,7 +18,7 @@ const addressSchema = new mongoose.Schema({
 const homeSchema = new mongoose.Schema({
   new: Boolean,
   liked: Boolean,
-  imageUrl: String,
+  imageUrl: Array,
   price: Number,
   size: {
     type: sizeSchema,
