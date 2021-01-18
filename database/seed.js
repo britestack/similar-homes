@@ -46,7 +46,7 @@ const getImageUrls = (num) => {
 const prepareDocuments = (num) => {
   const sampleHomes = [];
   for (let i = 1; i <= num; i += 1) {
-    const imgArr = getImageUrls(num);
+    const imgArr = getImageUrls(i);
     const newHome = createFakeHome(imgArr);
     sampleHomes.push(newHome);
   }

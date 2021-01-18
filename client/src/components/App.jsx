@@ -1,7 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import Similar from './Similar.jsx';
 import Near from './Near.jsx';
+
+const API_URL = 'http://localhost:3000/api/homes';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,14 +15,43 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getHomes();
+  }
+
+  getHomes() {
+    this.getNearbyHomes();
+    this.getSimilarHomes();
+  }
+
+  getNearbyHomes() {
+    const app = this;
+    axios.get(`${API_URL}/nearby`)
+      .then((results) => {
+        console.log(results.data);
+        app.setState({
+          nearCarousel: results.data,
+        });
+      })
+      .catch((err) => { console.log(err); });
+  }
+
+  getSimilarHomes() {
+    const app = this;
+    axios.get(`${API_URL}/similar`)
+      .then((results) => {
+        app.setState({
+          similarCarousel: results.data,
+        });
+      })
+      .catch((err) => { console.log(err); });
+  }
+
   render() {
     return (
       <div>
-        <p>App is rendering</p>
-        {/* <h1>Similar Homes You May Like</h1>
-        <Similar homes={this.state.similarCarousel}/>
-        <h1>New Listings near 224 Sea Cliff Ave</h1>
-        <Near homes={this.state.nearCarousel}/> */}
+        <Similar homes={this.state.similarCarousel} />
+        <Near homes={this.state.nearCarousel} />
       </div>
     );
   }
