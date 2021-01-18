@@ -1,7 +1,5 @@
-const Home = require('./index.js');
 const faker = require('faker');
-
-const sampleImgs = [];
+const Home = require('./index.js');
 
 const getRandomIntInclusive = (min, max) => (
   Math.floor(Math.random() * (max - min + 1) + min));
@@ -11,11 +9,11 @@ const isNew = () => {
   return x === 1;
 };
 
-const createFakeHome = () => {
+const createFakeHome = (images) => {
   const home = {};
   home.new = isNew();
   home.liked = false;
-  home.imageUrl = 'placeholder';
+  home.imageUrl = images;
   home.price = getRandomIntInclusive(10, 30) * 1000000;
   home.size = {
     beds: getRandomIntInclusive(2, 8),
@@ -32,10 +30,24 @@ const createFakeHome = () => {
   return home;
 };
 
+const getImageUrls = (num) => {
+  // Set houseNum to num % number of house images available
+  const houseNum = num % 21;
+  const images = [];
+
+  for (let i = 1; i <= 3; i += 1) {
+    const house = `https://homeimgs.s3-us-west-1.amazonaws.com/truliaHomes/${houseNum}.${i}.jpg`;
+    images.push(house);
+  }
+
+  return images;
+};
+
 const prepareDocuments = (num) => {
-  let sampleHomes = [];
-  for (let i = 0; i <= num; i += 1) {
-    let newHome = createFakeHome();
+  const sampleHomes = [];
+  for (let i = 1; i <= num; i += 1) {
+    const imgArr = getImageUrls(num);
+    const newHome = createFakeHome(imgArr);
     sampleHomes.push(newHome);
   }
   return sampleHomes;
@@ -51,4 +63,4 @@ const seedHomes = (num) => {
   });
 };
 
-seedHomes(100);
+seedHomes(101);
