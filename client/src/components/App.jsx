@@ -12,17 +12,14 @@ class App extends React.Component {
     };
   }
 
-  getHomes() {
-
-  }
-
   render() {
     return (
       <div>
-        <h1>Similar Homes You May Like</h1>
+        <p>App is rendering</p>
+        {/* <h1>Similar Homes You May Like</h1>
         <Similar homes={this.state.similarCarousel}/>
         <h1>New Listings near 224 Sea Cliff Ave</h1>
-        <Near homes={this.state.nearCarousel}/>
+        <Near homes={this.state.nearCarousel}/> */}
       </div>
     );
   }
