@@ -5,7 +5,6 @@ import Similar from './Similar.jsx';
 import Near from './Near.jsx';
 
 const API_URL = 'http://localhost:3000/api/homes';
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +27,6 @@ class App extends React.Component {
     const app = this;
     axios.get(`${API_URL}/nearby`)
       .then((results) => {
-        console.log(results.data);
         app.setState({
           nearCarousel: results.data,
         });
@@ -48,10 +46,16 @@ class App extends React.Component {
   }
 
   render() {
+    //Why does my app not work if this isnt here...
+    if (this.state.similarCarousel.length === 0) {
+      return (<div>Loading</div>);
+    }
     return (
       <div>
-        <Similar homes={this.state.similarCarousel} />
-        <Near homes={this.state.nearCarousel} />
+        <div>
+          <Similar homes={this.state.similarCarousel} />
+          {/* <Near homes={this.state.nearCarousel} /> */}
+        </div>
       </div>
     );
   }

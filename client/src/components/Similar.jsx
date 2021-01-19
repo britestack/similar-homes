@@ -5,7 +5,9 @@ import Carousel from './Carousel.jsx';
 const Similar = ({ homes }) => (
   <div>
     <div>Similar Homes You May Like</div>
-    <Carousel homes={homes} />
+    <div>
+      <Carousel homes={homes} />
+    </div>
   </div>
 );
 

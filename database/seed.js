@@ -24,7 +24,7 @@ const createFakeHome = (images) => {
     street: faker.address.streetAddress(),
     neighborhood: faker.address.county(),
     city: faker.address.city(),
-    state: faker.address.state(),
+    state: faker.address.stateAbbr(),
   };
   home.realtor = `${faker.name.findName()} - ${faker.company.companyName()}`;
   return home;
