@@ -1,5 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Heart from './Heart';
+import NewInfo from './NewInfo';
+import BedInfo from './BedInfo';
+import BathInfo from './BathInfo';
+import SqftInfo from './SqftInfo';
+import RealtorInfo from './RealtorInfo';
+import PriceInfo from './PriceInfo';
 
 const Card = styled.div`
   width: 240px;
@@ -11,18 +18,19 @@ const Card = styled.div`
   font-weight: 120;
 `;
 
+const ImageContainer = styled.div`
+  position: relative;
+  width: 224px;
+  height: 160px;
+`;
+
 const HomeImage = styled.img`
+  position: absolute;
+  z-index: 1;
   width: 224px;
   height: 160px;
   object-fit: cover;
-  border-radius: 8%;
-`;
-
-const PriceText = styled.div`
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.1px;
-  line-height: 24px;
+  border-radius: 8px;
 `;
 
 const BedBath = styled.div`
@@ -30,38 +38,39 @@ const BedBath = styled.div`
   line-height: 24px;
 `;
 
-const Info = styled.div`
-  height: 24px;
-  padding: 0px;
-  color: #3b4144;
-  fill: #869099;
-  align-items: center;
-  display: flex;
-  line-height: 24px;
+const StreetAddress = styled.div`
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const InfoContainer = styled.div`
+  height: 104px;
+  width: 224px;
+  padding-top: 8px;
+  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
 `;
 
 const Home = ({ home }) => (
   <Card>
-    <HomeImage src={home.imageUrl[0]} alt="missing" />
-    <div>
-      <PriceText>${home.price}</PriceText>
+    <ImageContainer>
+      <NewInfo isNew={home.new} />
+      <Heart />
+      <HomeImage src={home.imageUrl[0]} alt="missing" />
+    </ImageContainer>
+    <InfoContainer>
+      <PriceInfo price={home.price} decreased={home.decreased} />
       <BedBath>
-        <Info>
-          <i className="fas fa-bed"></i>
-          <p>{home.size.beds}bd</p>
-        </Info>
-        <Info>
-          <i className="fas fa-bath"></i>
-          <p>{home.size.baths}ba</p>
-        </Info>
-        <Info>
-          <i className="fas fa-ruler-combined"></i>
-          <p>{home.size.sqft}sqft</p>
-        </Info>
+        <BedInfo beds={home.size.beds} />
+        <BathInfo baths={home.size.baths} />
+        <SqftInfo sqft={home.size.sqft} />
       </BedBath>
-      <span>{home.address.street}</span>
-      <span>{home.address.neighborhood}, {home.address.city}, {home.address.state}</span>
-    </div>
+      <StreetAddress>{home.address.street}</StreetAddress>
+      <StreetAddress>{home.address.neighborhood}, {home.address.city}, {home.address.state}</StreetAddress>
+    </InfoContainer>
+    <RealtorInfo realtor={home.realtor} />
   </Card>
 );
 

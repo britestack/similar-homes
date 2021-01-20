@@ -22,12 +22,10 @@ const Background = styled.div`
 
 const ViewPort = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 960px;
   hieght: 327px;
   overflow: auto;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   -webkit-scrollbar {
     display: none;

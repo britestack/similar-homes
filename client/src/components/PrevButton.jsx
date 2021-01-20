@@ -31,15 +31,15 @@ const ChevronWrapper = styled.svg`
   align-items: center;
 `;
 
-const LeftChevron = styled.path`
-  color: rgb(59, 65, 68);
-`;
+const LeftChevron = () => (
+  <svg class="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M14.292 16.494l7.147 7.056-1.869 1.893-9.067-8.951 9.069-8.927 1.866 1.896z" fill="rgb(59, 65, 68)"></path></svg>
+);
 
 const PrevButton = ({ handleClick }) => (
   <Container>
     <PrevButtonInner onClick={handleClick}>
       <ChevronWrapper>
-        <LeftChevron d="M 14.292 16.494 l 7.147 7.056 l -1.869 1.893 l -9.067 -8.951 l 9.069 -8.927 l 1.866 1.896 Z" fill="rgb(59, 65, 68)" />
+        <LeftChevron />
       </ChevronWrapper>
     </PrevButtonInner>
   </Container>

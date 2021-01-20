@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   right: 0px;
   top: calc(50% - 24px);
@@ -32,15 +32,15 @@ const RightChevronWrapper = styled.svg`
   align-items: center;
 `;
 
-const RightChevron = styled.path`
-  fill: rgb(59, 65, 68);
-`;
+const RightChevron = () => (
+  <svg class="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 16.513l-7.147-7.055 1.868-1.893 9.068 8.951-9.069 8.927-1.866-1.896z" fill="rgb(59, 65, 68)"></path></svg>
+);
 
 const NextButton = ({ handleClick }) => (
   <Container>
     <NextButtonInner onClick={handleClick}>
       <RightChevronWrapper>
-        <RightChevron d="M 17.65 16.513 l -7.147 -7.055 l 1.868 -1.893 l 9.068 8.951 l -9.069 8.927 l -1.866 -1.896z" />
+        <RightChevron />
       </RightChevronWrapper>
     </NextButtonInner>
   </Container>

@@ -9,12 +9,17 @@ const isNew = () => {
   return x === 1;
 };
 
+const isDecreased = () => (
+  Math.random() > 0.75
+);
+
 const createFakeHome = (images) => {
   const home = {};
+  home.decreased = isDecreased();
   home.new = isNew();
   home.liked = false;
   home.imageUrl = images;
-  home.price = getRandomIntInclusive(10, 30) * 1000000;
+  home.price = getRandomIntInclusive(100, 300) * 100000;
   home.size = {
     beds: getRandomIntInclusive(2, 8),
     baths: getRandomIntInclusive(2, 8),
@@ -32,7 +37,10 @@ const createFakeHome = (images) => {
 
 const getImageUrls = (num) => {
   // Set houseNum to num % number of house images available
-  const houseNum = num % 21;
+  let houseNum = num % 21;
+  if (houseNum === 0) {
+    houseNum = 1;
+  }
   const images = [];
 
   for (let i = 1; i <= 3; i += 1) {

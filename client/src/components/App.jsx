@@ -58,10 +58,10 @@ class App extends React.Component {
       return (<div>Loading</div>);
     }
     return (
-        <PageLayout>
-          <Similar homes={this.state.similarCarousel} />
-          {/* <Near homes={this.state.nearCarousel} /> */}
-        </PageLayout>
+      <PageLayout>
+        <Similar homes={this.state.similarCarousel} />
+        <Near homes={this.state.nearCarousel}/>
+      </PageLayout>
     );
   }
 }
