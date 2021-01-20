@@ -35,14 +35,20 @@ const LeftChevron = () => (
   <svg class="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M14.292 16.494l7.147 7.056-1.869 1.893-9.067-8.951 9.069-8.927 1.866 1.896z" fill="rgb(59, 65, 68)"></path></svg>
 );
 
-const PrevButton = ({ handleClick }) => (
-  <Container>
-    <PrevButtonInner onClick={handleClick}>
-      <ChevronWrapper>
-        <LeftChevron />
-      </ChevronWrapper>
-    </PrevButtonInner>
-  </Container>
-);
+const PrevButton = ({ handleClick, view }) => {
+  if (view !== 0) {
+    return (
+      <Container>
+        <PrevButtonInner onClick={handleClick}>
+          <ChevronWrapper>
+            <LeftChevron />
+          </ChevronWrapper>
+        </PrevButtonInner>
+      </Container>
+    );
+  }
+
+  return (<div />);
+};
 
 export default PrevButton;

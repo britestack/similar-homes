@@ -39,7 +39,7 @@ const CardContainer = styled.div`
   margin-bottom: -18px;
   padding-bottom: 18px;
   transition: transform 0.4s 0s ease-in;
-  transform: translateX(-${(props) => 860 * props.view}px);
+  transform: translateX(-${(props) => 912 * props.view}px);
 `;
 
 class Carousel extends React.Component {
@@ -72,8 +72,8 @@ class Carousel extends React.Component {
     return (
       <div>
         <Background>
-          <PrevButton handleClick={this.handlePrev} />
-          <NextButton handleClick={this.handleNext} />
+          <PrevButton handleClick={this.handlePrev} view={this.state.view} />
+          <NextButton handleClick={this.handleNext} view={this.state.view} />
           <ViewPort>
             <CardContainer view={this.state.view}>
               {homesList}
