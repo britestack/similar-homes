@@ -4,6 +4,13 @@ import styled from 'styled-components';
 import Similar from './Similar.jsx';
 import Near from './Near.jsx';
 
+const PageLayout = styled.div`
+  color: rgb(59, 65, 68);
+  max-width: 960px;
+  margin: auto;
+  padding: 16px env(safe-area-inset-right) 48px env(safe-area-inset-left);
+`;
+
 const API_URL = 'http://localhost:3000/api/homes';
 class App extends React.Component {
   constructor(props) {
@@ -51,12 +58,10 @@ class App extends React.Component {
       return (<div>Loading</div>);
     }
     return (
-      <div>
-        <div>
+        <PageLayout>
           <Similar homes={this.state.similarCarousel} />
           {/* <Near homes={this.state.nearCarousel} /> */}
-        </div>
-      </div>
+        </PageLayout>
     );
   }
 }
