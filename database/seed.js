@@ -9,12 +9,17 @@ const isNew = () => {
   return x === 1;
 };
 
+const isDecreased = () => (
+  Math.random() > 0.75
+);
+
 const createFakeHome = (images) => {
   const home = {};
+  home.decreased = isDecreased();
   home.new = isNew();
   home.liked = false;
   home.imageUrl = images;
-  home.price = getRandomIntInclusive(10, 30) * 1000000;
+  home.price = getRandomIntInclusive(100, 300) * 100000;
   home.size = {
     beds: getRandomIntInclusive(2, 8),
     baths: getRandomIntInclusive(2, 8),
@@ -24,7 +29,7 @@ const createFakeHome = (images) => {
     street: faker.address.streetAddress(),
     neighborhood: faker.address.county(),
     city: faker.address.city(),
-    state: faker.address.state(),
+    state: faker.address.stateAbbr(),
   };
   home.realtor = `${faker.name.findName()} - ${faker.company.companyName()}`;
   return home;
@@ -32,7 +37,10 @@ const createFakeHome = (images) => {
 
 const getImageUrls = (num) => {
   // Set houseNum to num % number of house images available
-  const houseNum = num % 21;
+  let houseNum = num % 21;
+  if (houseNum === 0) {
+    houseNum = 1;
+  }
   const images = [];
 
   for (let i = 1; i <= 3; i += 1) {
@@ -46,7 +54,7 @@ const getImageUrls = (num) => {
 const prepareDocuments = (num) => {
   const sampleHomes = [];
   for (let i = 1; i <= num; i += 1) {
-    const imgArr = getImageUrls(num);
+    const imgArr = getImageUrls(i);
     const newHome = createFakeHome(imgArr);
     sampleHomes.push(newHome);
   }

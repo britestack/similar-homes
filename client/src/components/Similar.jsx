@@ -1,6 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import Carousel from './Carousel.jsx';
 
-const Similar = (props) => (<div>Near Carousel</div>);
+const SimilarHomesContainer = styled.div`
+  margin: 32px 0px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Header = styled.h3`
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bot: 8px;
+`;
+
+const Similar = ({ homes }) => (
+  <SimilarHomesContainer>
+    <Header>Similar Homes You May Like</Header>
+    <div>
+      <Carousel homes={homes} />
+    </div>
+  </SimilarHomesContainer>
+);
 
 export default Similar;

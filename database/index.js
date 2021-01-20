@@ -16,6 +16,7 @@ const addressSchema = new mongoose.Schema({
 });
 
 const homeSchema = new mongoose.Schema({
+  decreased: Boolean,
   new: Boolean,
   liked: Boolean,
   imageUrl: Array,
