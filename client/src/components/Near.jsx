@@ -15,7 +15,7 @@ const Header = styled.h3`
   margin-bot: 8px;
 `;
 
-const Near = ({ homes, address }) => (
+const Near = ({ homes }) => (
   <NearHomesContainer>
     <Header>New Listings near 195 Rousseau St</Header>
     <div>

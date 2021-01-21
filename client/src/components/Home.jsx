@@ -24,13 +24,33 @@ const ImageContainer = styled.div`
   height: 160px;
 `;
 
+const HomeImageContainer = styled.div`
+  position: absolute;
+  width: 224px;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+`;
 const HomeImage = styled.img`
+  object-fit: cover;
+  border-radius: 8px;
   position: absolute;
   z-index: 1;
   width: 224px;
   height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
+  -webkit-transition: all 0.7s ease; /* Safari and Chrome */
+  -moz-transition: all 0.7s ease; /* Firefox */
+  -ms-transition: all 0.7s ease; /* IE 9 */
+  -o-transition: all 0.7s ease; /* Opera */
+  transition: all 0.7s ease;
+
+  &:hover {
+    -webkit-transform:scale(1.2); /* Safari and Chrome */
+    -moz-transform:scale(1.2); /* Firefox */
+    -ms-transform:scale(1.2); /* IE 9 */
+      -o-transform:scale(1.2); /* Opera */
+      transform:scale(1.2);
+  };
 `;
 
 const BedBath = styled.div`
@@ -58,7 +78,9 @@ const Home = ({ home }) => (
     <ImageContainer>
       <NewInfo isNew={home.new} />
       <Heart />
-      <HomeImage src={home.imageUrl[0]} alt="missing" />
+      <HomeImageContainer>
+        <HomeImage src={home.imageUrl[0]} alt="missing" />
+      </HomeImageContainer>
     </ImageContainer>
     <InfoContainer>
       <PriceInfo price={home.price} decreased={home.decreased} />
