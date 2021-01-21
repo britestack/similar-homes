@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import Similar from './Similar.jsx';
-import Near from './Near.jsx';
+import Similar from './Similar';
+import Near from './Near';
 
 const PageLayout = styled.div`
   color: rgb(59, 65, 68);
@@ -53,14 +53,16 @@ class App extends React.Component {
   }
 
   render() {
-    //Why does my app not work if this isnt here...
-    if (this.state.similarCarousel.length === 0 || this.state.similarCarousel.length === 0) {
+    // Why does my app not work if this isnt here...
+    const { similarCarousel } = this.state;
+    const { nearCarousel } = this.state;
+    if (similarCarousel.length === 0 || nearCarousel.length === 0) {
       return (<div />);
     }
     return (
       <PageLayout>
-        <Similar homes={this.state.similarCarousel} />
-        <Near homes={this.state.nearCarousel}/>
+        <Similar homes={similarCarousel} />
+        <Near homes={nearCarousel} />
       </PageLayout>
     );
   }
