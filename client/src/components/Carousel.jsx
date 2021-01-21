@@ -41,7 +41,10 @@ const CardContainer = styled.div`
   margin-bottom: -18px;
   padding-bottom: 18px;
   transition: transform 0.4s 0s ease-in;
-  transform: translateX(-${(props) => 912 * props.view}px);
+  transform: translateX(-${(props) => {
+    const amount = Math.min(912 * props.view, -(props.minTranslate));
+    return amount;
+  }}px);
 `;
 
 class Carousel extends React.Component {
@@ -50,6 +53,7 @@ class Carousel extends React.Component {
     this.state = {
       currentHomes: props.homes,
       view: 0,
+      minTranslate: -((props.homes.length - 3) * 240),
     };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
@@ -72,6 +76,8 @@ class Carousel extends React.Component {
   }
 
   render() {
+    const { minTranslate } = this.state;
+    console.log(minTranslate);
     const { view } = this.state;
     const { currentHomes } = this.state;
     const homesList = currentHomes.map((home) => (<Home home={home} />));
@@ -81,7 +87,7 @@ class Carousel extends React.Component {
           <PrevButton handleClick={this.handlePrev} view={view} />
           <NextButton handleClick={this.handleNext} view={view} />
           <ViewPort>
-            <CardContainer view={view}>
+            <CardContainer view={view} minTranslate={minTranslate}>
               {homesList}
               <SeeMoreCard />
             </CardContainer>
