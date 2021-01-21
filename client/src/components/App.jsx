@@ -54,8 +54,8 @@ class App extends React.Component {
 
   render() {
     //Why does my app not work if this isnt here...
-    if (this.state.similarCarousel.length === 0) {
-      return (<div>Loading</div>);
+    if (this.state.similarCarousel.length === 0 || this.state.similarCarousel.length === 0) {
+      return (<div />);
     }
     return (
       <PageLayout>
