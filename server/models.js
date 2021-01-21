@@ -17,7 +17,7 @@ const getNearby = (callback) => {
     } else {
       callback(null, results);
     }
-  }).sort({ price: -1 }).limit(16);
+  }).sort({ _id: -1 }).limit(16);
 };
 
 const getSimilar = (callback) => {
@@ -27,7 +27,7 @@ const getSimilar = (callback) => {
     } else {
       callback(null, results);
     }
-  }).sort({ price: 1 }).limit(16);
+  }).sort({ _id: 1 }).limit(16);
 };
 
 const toggleOnLike = (id, callback) => {

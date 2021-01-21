@@ -68,7 +68,7 @@ class Carousel extends React.Component {
   }
 
   render() {
-    var homesList = this.state.currentHomes.map((home) => (<Home home={home} />));
+    const homesList = this.state.currentHomes.map((home) => (<Home home={home} />));
     return (
       <div>
         <Background>
