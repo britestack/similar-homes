@@ -59,6 +59,7 @@ const BedBath = styled.div`
 `;
 
 const StreetAddress = styled.div`
+  font-weight: 100px;
   font-size: 16px;
   line-height: 1.5;
   white-space: nowrap;
@@ -70,7 +71,6 @@ const InfoContainer = styled.div`
   height: 104px;
   width: 224px;
   padding-top: 8px;
-  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
 `;
 
 const Home = ({ home }) => (

@@ -9,6 +9,7 @@ const NearHomesContainer = styled.div`
 `;
 
 const Header = styled.h3`
+  font-family: Cabin;
   font-weight: bold;
   font-size: 20px;
   line-height: 1.2;

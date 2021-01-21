@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 const BedIconContainer = styled.div`
   height: 20px;
   width: 20px;
+  margin-right: 4px;
+  margin-left: 4px;
 `;
 
 const BedIcon = () => (
@@ -12,7 +14,9 @@ const BedIcon = () => (
 );
 
 const Info = styled.div`
+  font-weight: 100;
   height: 24px;
+  font-size: 16px;
   padding: 0px;
   color: #3b4144;
   fill: #869099;

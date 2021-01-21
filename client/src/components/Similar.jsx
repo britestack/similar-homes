@@ -9,7 +9,7 @@ const SimilarHomesContainer = styled.div`
 `;
 
 const Header = styled.h3`
-  font-weight: bold;
+  font-family: Cabin;
   font-size: 20px;
   line-height: 1.2;
   margin-bot: 8px;

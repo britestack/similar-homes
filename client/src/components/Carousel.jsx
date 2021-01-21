@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Home from './Home';
@@ -10,7 +11,7 @@ const Background = styled.div`
   box-sizing: border-box;
   color: rgb(59, 65, 68);
   display: block;
-  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+  font-family: Cabin, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
   font-size: 16px;
   height: 311px;
   letter-spacing: -0.1px;
@@ -23,15 +24,15 @@ const Background = styled.div`
 `;
 
 const ViewPort = styled.div`
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  : :-webkit-scrollbar {
+    display: none;
+  };
+
   position: absolute;
   width: 960px;
   hieght: 327px;
-  overflow: auto;
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
-  -webkit-scrollbar {
-    display: none;
-  };
   box-sizing: border-box;
 `;
 
