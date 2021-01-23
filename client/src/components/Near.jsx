@@ -9,17 +9,18 @@ const NearHomesContainer = styled.div`
 `;
 
 const Header = styled.h3`
+  font-family: Cabin;
   font-weight: bold;
   font-size: 20px;
   line-height: 1.2;
   margin-bot: 8px;
 `;
 
-const Near = ({ homes }) => (
+const Near = ({ homes, handleClick, handleExit }) => (
   <NearHomesContainer>
     <Header>New Listings near 195 Rousseau St</Header>
     <div>
-      <Carousel homes={homes} />
+      <Carousel homes={homes} handleClick={handleClick} handleExit={handleExit} />
     </div>
   </NearHomesContainer>
 );

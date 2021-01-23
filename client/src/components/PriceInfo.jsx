@@ -9,10 +9,10 @@ const TopContainer = styled.div`
 `;
 
 const PriceText = styled.div`
+  font-family: Cabin;
   margin-right: 8px;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 1.2;
+  font-size: 19px;
+  line-height: 24px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -25,7 +25,7 @@ const DownArrowContainer = styled.div`
 `;
 
 const DownArrow = () => (
-  <div class="getUiSvgContainer__SvgContainer-sc-12y8qp5-0 fjdfD"><svg class="svg" data-testid="property-trend-down" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.161 22.414l5.776-5.11 1.762 1.992-8.73 7.725-9.005-7.692 1.727-2.023 5.81 4.963V5.863h2.66v16.55z" fill="#00b25b"></path></svg></div>
+  <div><svg data-testid="property-trend-down" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.161 22.414l5.776-5.11 1.762 1.992-8.73 7.725-9.005-7.692 1.727-2.023 5.81 4.963V5.863h2.66v16.55z" fill="#00b25b" /></svg></div>
 );
 
 const numberWithCommas = (x) => (

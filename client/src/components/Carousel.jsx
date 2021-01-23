@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Home from './Home';
@@ -10,7 +11,7 @@ const Background = styled.div`
   box-sizing: border-box;
   color: rgb(59, 65, 68);
   display: block;
-  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+  font-family: Cabin, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
   font-size: 16px;
   height: 311px;
   letter-spacing: -0.1px;
@@ -23,19 +24,20 @@ const Background = styled.div`
 `;
 
 const ViewPort = styled.div`
-  position: absolute;
-  width: 960px;
-  hieght: 327px;
-  overflow: auto;
-  overflow: hidden;
+  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
-  -webkit-scrollbar {
+  : :-webkit-scrollbar {
     display: none;
   };
+  display: flex;
+  position: absolute;
+  width: 960px;
+  height: 327px;
   box-sizing: border-box;
 `;
 
 const CardContainer = styled.div`
+  position: relative;
   display: flex;
   width: fit-content;
   margin-bottom: -18px;
@@ -77,10 +79,18 @@ class Carousel extends React.Component {
 
   render() {
     const { minTranslate } = this.state;
-    console.log(minTranslate);
     const { view } = this.state;
     const { currentHomes } = this.state;
-    const homesList = currentHomes.map((home) => (<Home home={home} />));
+    const { handleClick } = this.props;
+    const { handleExit } = this.props;
+    const homesList = currentHomes.map((home) => (
+      <Home
+        home={home}
+        handleClick={handleClick}
+        handleExit={handleExit}
+      />
+    ));
+
     return (
       <div>
         <Background>

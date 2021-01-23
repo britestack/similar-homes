@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const SqftIconContainer = styled.div`
   height: 20px;
   width: 20px;
+  margin-right: 4px;
+  margin-left: 4px;
 `;
 
 const SqftIcon = () => (
@@ -11,6 +13,8 @@ const SqftIcon = () => (
 );
 
 const Info = styled.div`
+  font-weight: 100;
+  font-size: 16px;
   height: 24px;
   padding: 0px;
   color: #3b4144;
@@ -25,7 +29,7 @@ const SqftInfo = ({ sqft }) => (
     <SqftIconContainer>
       <SqftIcon />
     </SqftIconContainer>
-    <p>{ sqft }sqft</p>
+    <p>{ sqft } sqft</p>
   </Info>
 );
 

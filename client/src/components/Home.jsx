@@ -7,6 +7,7 @@ import BathInfo from './BathInfo';
 import SqftInfo from './SqftInfo';
 import RealtorInfo from './RealtorInfo';
 import PriceInfo from './PriceInfo';
+import HomeImageCarousel from './HomeImageCarousel';
 
 const Card = styled.div`
   width: 240px;
@@ -24,41 +25,13 @@ const ImageContainer = styled.div`
   height: 160px;
 `;
 
-const HomeImageContainer = styled.div`
-  position: absolute;
-  width: 224px;
-  height: 160px;
-  border-radius: 8px;
-  overflow: hidden;
-`;
-const HomeImage = styled.img`
-  object-fit: cover;
-  border-radius: 8px;
-  position: absolute;
-  z-index: 1;
-  width: 224px;
-  height: 160px;
-  -webkit-transition: all 0.7s ease; /* Safari and Chrome */
-  -moz-transition: all 0.7s ease; /* Firefox */
-  -ms-transition: all 0.7s ease; /* IE 9 */
-  -o-transition: all 0.7s ease; /* Opera */
-  transition: all 0.7s ease;
-
-  &:hover {
-    -webkit-transform:scale(1.2); /* Safari and Chrome */
-    -moz-transform:scale(1.2); /* Firefox */
-    -ms-transform:scale(1.2); /* IE 9 */
-      -o-transform:scale(1.2); /* Opera */
-      transform:scale(1.2);
-  };
-`;
-
 const BedBath = styled.div`
   display: flex;
   line-height: 24px;
 `;
 
 const StreetAddress = styled.div`
+  font-weight: 100px;
   font-size: 16px;
   line-height: 1.5;
   white-space: nowrap;
@@ -70,17 +43,14 @@ const InfoContainer = styled.div`
   height: 104px;
   width: 224px;
   padding-top: 8px;
-  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
 `;
 
-const Home = ({ home }) => (
+const Home = ({ home, handleClick, handleExit }) => (
   <Card>
     <ImageContainer>
       <NewInfo isNew={home.new} />
       <Heart />
-      <HomeImageContainer>
-        <HomeImage src={home.imageUrl[0]} alt="missing" />
-      </HomeImageContainer>
+      <HomeImageCarousel images={home.imageUrl} handleClick={handleClick} handleExit={handleExit} />
     </ImageContainer>
     <InfoContainer>
       <PriceInfo price={home.price} decreased={home.decreased} />

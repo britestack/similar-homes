@@ -5,6 +5,8 @@ import Similar from './Similar';
 import Near from './Near';
 
 const PageLayout = styled.div`
+  filter: blur(${(props) => (props.showModal ? 2 : 0)}px);
+  position: relative;
   color: rgb(59, 65, 68);
   max-width: 960px;
   margin: auto;
@@ -16,9 +18,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showModal: false,
       similarCarousel: [],
       nearCarousel: [],
     };
+    this.displayBlur = this.displayBlur.bind(this);
+    this.removeBlur = this.removeBlur.bind(this);
   }
 
   componentDidMount() {
@@ -52,17 +57,32 @@ class App extends React.Component {
       .catch((err) => { console.log(err); });
   }
 
+  displayBlur() {
+    this.setState({
+      showModal: true,
+    });
+  }
+
+  removeBlur() {
+    this.setState({
+      showModal: false,
+    });
+  }
+
   render() {
     // Why does my app not work if this isnt here...
     const { similarCarousel } = this.state;
     const { nearCarousel } = this.state;
+    const { showModal } = this.state;
+
     if (similarCarousel.length === 0 || nearCarousel.length === 0) {
       return (<div />);
     }
+
     return (
-      <PageLayout>
-        <Similar homes={similarCarousel} />
-        <Near homes={nearCarousel} />
+      <PageLayout showModal={showModal}>
+        <Similar homes={similarCarousel} handleClick={this.displayBlur} handleExit={this.removeBlur} />
+        <Near homes={nearCarousel} handleClick={this.displayBlur} handleExit={this.removeBlur} />
       </PageLayout>
     );
   }
