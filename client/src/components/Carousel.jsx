@@ -29,14 +29,15 @@ const ViewPort = styled.div`
   : :-webkit-scrollbar {
     display: none;
   };
-
+  display: flex;
   position: absolute;
   width: 960px;
-  hieght: 327px;
+  height: 327px;
   box-sizing: border-box;
 `;
 
 const CardContainer = styled.div`
+  position: relative;
   display: flex;
   width: fit-content;
   margin-bottom: -18px;
@@ -78,10 +79,18 @@ class Carousel extends React.Component {
 
   render() {
     const { minTranslate } = this.state;
-    console.log(minTranslate);
     const { view } = this.state;
     const { currentHomes } = this.state;
-    const homesList = currentHomes.map((home) => (<Home home={home} />));
+    const { handleClick } = this.props;
+    const { handleExit } = this.props;
+    const homesList = currentHomes.map((home) => (
+      <Home
+        home={home}
+        handleClick={handleClick}
+        handleExit={handleExit}
+      />
+    ));
+
     return (
       <div>
         <Background>

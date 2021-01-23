@@ -15,11 +15,11 @@ const Header = styled.h3`
   margin-bot: 8px;
 `;
 
-const Similar = ({ homes }) => (
+const Similar = ({ homes, handleClick, handleExit }) => (
   <SimilarHomesContainer>
     <Header>Similar Homes You May Like</Header>
     <div>
-      <Carousel homes={homes} />
+      <Carousel homes={homes} handleClick={handleClick} handleExit={handleExit} />
     </div>
   </SimilarHomesContainer>
 );
