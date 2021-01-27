@@ -13,7 +13,7 @@ const PageLayout = styled.div`
   padding: 16px env(safe-area-inset-right) 48px env(safe-area-inset-left);
 `;
 
-const API_URL = 'http://localhost:3001/api/homes';
+const API_URL = '/api/homes';
 class App extends React.Component {
   constructor(props) {
     super(props);
