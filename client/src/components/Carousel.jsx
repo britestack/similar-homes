@@ -83,8 +83,9 @@ class Carousel extends React.Component {
     const { currentHomes } = this.state;
     const { handleClick } = this.props;
     const { handleExit } = this.props;
-    const homesList = currentHomes.map((home) => (
+    const homesList = currentHomes.map((home, index) => (
       <Home
+        key={index}
         home={home}
         handleClick={handleClick}
         handleExit={handleExit}

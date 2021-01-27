@@ -13,7 +13,7 @@ const Card = styled.div`
   width: 240px;
   font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
   height: 327px:
-  borderSizing: border-box;
+  box-sizing: border-box;
   line-height: 24px;
   font-size: 15px;
   font-weight: 120;

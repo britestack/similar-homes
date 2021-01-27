@@ -13,7 +13,8 @@ const Header = styled.h3`
   font-weight: bold;
   font-size: 20px;
   line-height: 1.2;
-  margin-bot: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 `;
 
 const Near = ({ homes, handleClick, handleExit }) => (
