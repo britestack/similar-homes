@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 const Card = styled.div`
   width: 240px;
-  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+  font-family: 'TruliaSans', system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
   height: 327px:
-  borderSizing: border-box;
   line-height: 24px;
   font-size: 15px;
   font-weight: 120;
@@ -20,8 +19,9 @@ const ImageContainer = styled.div`
 const HomeDivContainer = styled.div`
   position: absolute;
   border-radius: 8px;
-  width: 206px;
-  height: 142px;
+  box-sizing: border-box;
+  width: 224px;
+  height: 160px;
   padding: 9px;
   background-color: #e8e9ea;
 `;
@@ -57,7 +57,7 @@ const MoreButton = styled.div`
     color: rgb(255, 255, 255);
   }
 
-  margin-bot: 4px;
+  margin-bottom: 4px;
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;

@@ -9,10 +9,10 @@ const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9;
-  position: absolute;
+  z-index: 99;
+  position: fixed;
   width: 100%;
-  height: 100%;
+  height: 101%;
   display: 'block';
   justify-content: 'center';
   align-items: 'center';
@@ -117,7 +117,7 @@ class HomeModal extends React.Component {
             </ViewPort>
           </ViewWrapper>
         </Container>,
-        document.getElementById('modal-root'),
+        document.getElementById('similar'),
       )
     );
   }
