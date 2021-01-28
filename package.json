@@ -13,7 +13,7 @@
     "start": "nodemon server",
     "build": "webpack",
     "watch": "webpack -w",
-    "docker-start": "node db/seed.js & webpack & node server"
+    "docker-start": "node database/seed.js & webpack & node server"
   },
   "dependencies": {
     "axios": "^0.21.1",
