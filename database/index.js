@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/home', { useNewUrlParser: true, useUnifiedTopology: true });
+const DB_URL = process.env.CONNECTIONSTRING || 'mongodb://localhost/home';
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const sizeSchema = new mongoose.Schema({
   beds: Number,

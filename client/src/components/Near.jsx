@@ -19,7 +19,7 @@ const Header = styled.h3`
 
 const Near = ({ homes, handleClick, handleExit }) => (
   <NearHomesContainer>
-    <Header>New Listings near 195 Rousseau St</Header>
+    <Header>New Listings near 435 Marina Blvd</Header>
     <div>
       <Carousel homes={homes} handleClick={handleClick} handleExit={handleExit} />
     </div>
