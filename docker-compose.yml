@@ -1,7 +1,7 @@
 version: '3'
 services:
  checkout:
-  build: similar-homes-service/Dockerfile
+  build:
    context: .
   ports:
    - 3001:3001
