@@ -13,4 +13,4 @@ RUN npm install --production
 
 EXPOSE 3001
 
-CMD [ "npm", "docker-build" ]
+CMD [ "npm", "run", "docker-start" ]
