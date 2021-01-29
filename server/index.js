@@ -14,4 +14,4 @@ app.get('/api/homes/nearby', controllers.getNearbyHomes);
 app.get('/api/homes/similar', controllers.getSimilarHomes);
 app.patch('/api/homes/liked/:id', controllers.updateLiked);
 
-app.listen(3001, () => {console.log('Listening on Port 3001'); });
+app.listen(3001, () => { console.log('Listening on Port 3001'); });
