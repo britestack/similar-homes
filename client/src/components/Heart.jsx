@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  cursor: pointer;
   position: absolute;
   z-index: 2;
   display: inline-flex;

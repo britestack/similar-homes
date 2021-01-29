@@ -12,6 +12,7 @@ const HomeImageContainer = styled.div`
 `;
 
 const HomeImage = styled.img`
+  cursor: pointer;
   object-fit: cover;
   border-radius: 8px;
   position: absolute;

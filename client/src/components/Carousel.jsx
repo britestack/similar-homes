@@ -24,6 +24,7 @@ const Background = styled.div`
 `;
 
 const ViewPort = styled.div`
+  overflow-y: hidden;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   : :-webkit-scrollbar {
