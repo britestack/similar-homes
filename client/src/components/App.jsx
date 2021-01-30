@@ -81,8 +81,16 @@ class App extends React.Component {
 
     return (
       <PageLayout showModal={showModal}>
-        <Similar homes={similarCarousel} handleClick={this.displayBlur} handleExit={this.removeBlur} />
-        <Near homes={nearCarousel} handleClick={this.displayBlur} handleExit={this.removeBlur} />
+        <Similar
+          homes={similarCarousel}
+          handleClick={this.displayBlur}
+          handleExit={this.removeBlur}
+        />
+        <Near
+          homes={nearCarousel}
+          handleClick={this.displayBlur}
+          handleExit={this.removeBlur}
+        />
       </PageLayout>
     );
   }
