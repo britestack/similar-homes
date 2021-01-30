@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const compression = require('compression');
 const controllers = require('./controllers.js');
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../client', 'dist')));
+app.use(compression());
 app.use(cors());
 app.use(express.json());
 
