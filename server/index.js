@@ -11,7 +11,6 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 
-// app.get('/', (req, res) => { res.redirect('/1'); });
 app.get('/api/homes', controllers.getAllHomes);
 app.get('/api/homes/nearby', controllers.getNearbyHomes);
 app.get('/api/homes/similar', controllers.getSimilarHomes);
