@@ -11,27 +11,31 @@ const getAllHomes = (req, res) => {
 };
 
 const getNearbyHomes = (req, res) => {
-  models.getNearby((err, results) => {
+  const { id } = req.params;
+  models.getNearby(id, (err, results) => {
     if (err) {
       res.status(500).send('Failed to get nearby homes');
     } else {
+      if (id % 2 === 0) { results.reverse(); }
       res.status(200).json(results);
     }
   });
 };
 
 const getSimilarHomes = (req, res) => {
-  models.getSimilar((err, results) => {
+  const { id } = req.params;
+  models.getSimilar(id, (err, results) => {
     if (err) {
       res.status(500).send('Failed to get similar homes');
     } else {
+      if (id % 3 === 0) { results.reverse(); }
       res.status(200).json(results);
     }
   });
 };
 
 const updateLiked = (req, res) => {
-  let id = req.params.id;
+  const { id } = req.params;
   models.toggleOnLike(id, (err, results) => {
     if (err) {
       res.status(500).send('Failed update home to liked list');
