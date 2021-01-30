@@ -17,7 +17,10 @@ const API_URL = '/api/homes';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    const { ID } = props;
+
     this.state = {
+      _id: ID,
       showModal: false,
       similarCarousel: [],
       nearCarousel: [],
@@ -37,7 +40,8 @@ class App extends React.Component {
 
   getNearbyHomes() {
     const app = this;
-    axios.get(`${API_URL}/nearby`)
+    const { _id } = this.state;
+    axios.get(`${API_URL}/nearby/${_id}`)
       .then((results) => {
         app.setState({
           nearCarousel: results.data,
@@ -48,7 +52,8 @@ class App extends React.Component {
 
   getSimilarHomes() {
     const app = this;
-    axios.get(`${API_URL}/similar`)
+    const { _id } = this.state;
+    axios.get(`${API_URL}/similar/${_id}`)
       .then((results) => {
         app.setState({
           similarCarousel: results.data,
