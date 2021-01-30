@@ -10,7 +10,7 @@ const getAll = (callback) => {
   });
 };
 
-const getNearby = (id, callback) => {
+const getNearby = (callback) => {
   Home.find({}, (err, results) => {
     if (err) {
       callback(err);
@@ -20,7 +20,7 @@ const getNearby = (id, callback) => {
   }).sort({ _id: -1 }).limit(16);
 };
 
-const getSimilar = (id, callback) => {
+const getSimilar = (callback) => {
   Home.find({}, (err, results) => {
     if (err) {
       callback(err);
