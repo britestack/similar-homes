@@ -32,7 +32,7 @@
 ### `GET` /api/homes/new/:homeid
   Gets up to 20 homes in the same area of given home, that have been listed recently
   - `request` 
-      - request params: { homeid: int }
+      - request params: `{ homeid: int }`
   - `response`
       - response code (success): `204`
       - response body: `[ { home1 info },..., { homeN info } ]`  (N <= 20)
