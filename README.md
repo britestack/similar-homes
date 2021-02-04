@@ -3,7 +3,7 @@
 ## API Endpoints
 
 ### KEY:
-  home info: 
+  ##### Home info: 
   ```json
   { 
     "id": "SERIAL",
