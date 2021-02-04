@@ -2,7 +2,7 @@
 
 ## API Endpoints
 
-### KEY:
+#### KEY:
   ##### Home info: 
   ```json
   { 
@@ -20,14 +20,14 @@
     "score": "INT",
   }
   ```
-### `Patch` /api/user/:homeid
+#### `PATCH` /api/user/:homeid
   Updates whether a home has been saved by a user
   - `request` 
       - request body: `{ saved: boolean }`
   - `response`
       - response code (success): `200`
  
-### `GET` /api/homes/new/:homeid
+#### `GET` /api/homes/new/:homeid
   Gets up to 20 homes in the same area of given home, that have been listed recently
   - `request` 
       - request params: `{ homeid: int }`
@@ -35,14 +35,14 @@
       - response code (success): `204`
       - response body: `[ { home1 info },..., { homeN info } ]`  (N <= 20)
      
-### `GET` /api/homes/similar/:homeid
+#### `GET` /api/homes/similar/:homeid
   Gets up to 20 homes in the same area of given home, that are similar in size and price
   - `request` 
       - request params: `{ homeid: int }`
   - `response`
       - response code (success): `204`
       - response body: `[ {home1 info},..., {homeN info} ]`  (N <= 20)
-### `POST` /api/home
+#### `POST` /api/home
   Add new home to database
   - `request` 
       - request params: `{ homeid: int }`
@@ -50,9 +50,9 @@
   - `response`
       - response code (success): `201`
 
-### `DELETE` api/home/:homeid
+#### `DELETE` api/home/:homeid
   Remove home from the database
   - `request` 
      - request params: `{ homeid: int }`
   - `response`
-      - response code (success): `200`
+     - response code (success): `200`
