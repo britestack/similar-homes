@@ -1,6 +1,4 @@
-# Project Name
-
-> Similar Homes Photo Carousel
+# Similar Homes Photo Carousel
 
 ## API Endpoints
 
