@@ -13,14 +13,16 @@ function getRandomInt(min, max) {
 
 function writeTenMillionHomes(writer, encoding, callback) {
   let i = 10000000;
-  let id = 0;
   function write() {
     let ok = true;
     do {
+      if (i % 50000) {
+        console.log(`${i} records left to write!`);
+      }
       i -= 1;
-      id += 1;
-      const dateListed = ;
-      const imageUrl = ;
+      const dateListed = faker.date.past();
+      const imageIndex = i % 333; //number photos in s3
+      const imageUrl = `https://fec-house-photos.s3-us-west-1.amazonaws.com/${imageIndex}.jpg`;
       const beds = getRandomInt(1, 10);
       const baths = getRandomInt(1, 10);
       const sqft = (beds + baths) * getRandomInt(200, 600);
