@@ -1,49 +1,58 @@
-# Project Name
+# Similar Homes Photo Carousel
 
-> Similar Homes Photo Carousel
+## API Endpoints
 
-## Related Projects
+#### KEY:
+  ##### Home info: 
+  ```json
+  { 
+    "id": "SERIAL",
+    "dateListed": "DATE",
+    "price": "INT",
+    "imageUrl": "VARCHAR()", 
+    "beds": "SMALLINT",
+    "bath": "SMALLINT",
+    "sqft": "INT",
+    "street": "VARCHAR(30)",
+    "zipcode": "VARCHAR(10)",
+    "city": "VARCHAR(30)",
+    "state": "VARCHAR(2)",
+    "score": "INT",
+  }
+  ```
+#### `PATCH` /api/user/:homeid
+  Updates whether a home has been saved by a user
+  - `request` 
+      - request body: `{ saved: boolean }`
+  - `response`
+      - response code (success): `200`
+ 
+#### `GET` /api/homes/new/:homeid
+  Gets up to 20 homes in the same area of given home, that have been listed recently
+  - `request` 
+      - request params: `{ homeid: int }`
+  - `response`
+      - response code (success): `204`
+      - response body: `[ { home1 info },..., { homeN info } ]`  (N <= 20)
+     
+#### `GET` /api/homes/similar/:homeid
+  Gets up to 20 homes in the same area of given home, that are similar in size and price
+  - `request` 
+      - request params: `{ homeid: int }`
+  - `response`
+      - response code (success): `204`
+      - response body: `[ {home1 info},..., {homeN info} ]`  (N <= 20)
+#### `POST` /api/home
+  Add new home to database
+  - `request` 
+      - request params: `{ homeid: int }`
+      - request body: `{ home info }`
+  - `response`
+      - response code (success): `201`
 
-  - https://github.com/Archon-Design/AffordabilityCalculator
-  - https://github.com/Archon-Design/Local-Review
-  - https://github.com/Archon-Design/PhotoGallery-rev1
-  - https://github.com/Archon-Design/similar-homes-proxy
-
-## Snapshot of Component
-
-![snapshot](component.png)
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- MongoDB v4.4.0
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install : installs packages and dependencies necessary.
-
-npm run build : Will run webpack bundler.
-
-npm run seed : seeds the database.
-
-npm run start : Will start the server and setup the project.
-
-npm run test : runs testing suite and gives a coverage report.
-```
+#### `DELETE` api/home/:homeid
+  Remove home from the database
+  - `request` 
+     - request params: `{ homeid: int }`
+  - `response`
+     - response code (success): `200`
