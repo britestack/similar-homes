@@ -9,7 +9,7 @@ CREATE TABLE homes (
   price integer NOT NULL,
   imageUrl varchar(200),
   beds smallint,
-  bath smallint,
+  baths smallint,
   sqft integer NOT NULL,
   street varchar(30),
   zipcode varchar(10) NOT NULL,
