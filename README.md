@@ -35,7 +35,7 @@
  #### `GET` /api/users/:userid
  Gets user with the given userid
  - `request` 
-     - request params: `{ user: int }`
+     - request params: `{ userid: int }`
  - `response`
      - response code (success): `200`
      - response body: `{ user info }`
