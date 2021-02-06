@@ -15,26 +15,32 @@ function async writeAllSimilar(writer, encoding, callback) {
       }
       i -= 1;
       base_home_id = 0;
-      await connection.query(`SELECT zipcode from homes where home_id = ${base_home_id}`)
-        .then(({ rows }) => {
-          let zip = rows[0].zipcode;
-          let queryString = `
-            SELECT home_id
-            FROM homes
-            ORDER BY datelisted DESC
-            LIMIT 8
-          `;
-          connection.query(queryString)
-            .then(({ rows }) => {
+      await connection.query(`SELECT zipcode from homes where home_id = 1`)
+      .then(({ rows }) => {
+        let zip = rows[0].zipcode;
+        let queryString = `
+          SELECT home_id
+          FROM homes
+          WHERE zipcode = '${zip}'
+          ORDER BY datelisted DESC
+          LIMIT 8
+        `;
+        return connection.query(queryString)
+          .then(({ rows }) => {
+            rows.forEach((row) => {
+              let related_home_id = row.home_id;
+              const data = `${base_home_id},${related_home_id}\n`;
+              if (i === 0) {
+                writer.write(data, encoding, callback);
+              } else {
+                ok = writer.write(data, encoding);
+              }
+            });
+          })
+          .catch((err) => console.log(err));
+      });
+      //const data = `${base_home_id},${related_home_id}\n`;
 
-            })
-        });
-      const data = `${base_home_id},${related_home_id}\n`;
-      if (i === 0) {
-        writer.write(data, encoding, callback);
-      } else {
-        ok = writer.write(data, encoding);
-      }
       base_home_id += 1;
     } while (i > 0 && ok);
     if (i > 0) {
