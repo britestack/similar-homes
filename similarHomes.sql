@@ -15,7 +15,10 @@ CREATE TABLE homes (
   zipcode varchar(10) NOT NULL,
   city_name varchar(30),
   state_name varchar(2),
-  score integer
+  score integer,
+  realtor varchar(40),
+  decreased boolean,
+  new_home boolean
 );
 
 CREATE TABLE similarHomes (
@@ -32,13 +35,16 @@ CREATE TABLE newNearHomes (
 
 CREATE TABLE users (
   user_id serial PRIMARY KEY,
-  user_name varchar(24),
-  pass_word varchar(24),
+  username varchar(24),
+  pword varchar(24),
   email varchar(50)
 );
 
 CREATE TABLE userSaves (
   id serial PRIMARY KEY,
-  user_id integer NOT NULL REFERENCES homes (user_id),
+  user_id integer NOT NULL REFERENCES users (user_id),
   home_id integer NOT NULL REFERENCES homes (home_id)
 );
+
+CREATE INDEX zip_score_index ON homes(zipcode) INCLUDE (score);
+CREATE INDEX zip_date_index ON homes(zipcode) INCLUDE (dateListed);

@@ -2,7 +2,7 @@ const faker = require('faker');
 const fs = require('fs');
 
 const writeHomes = fs.createWriteStream('homes.csv');
-writeHomes.write('dateListed,price,imageUrl,beds,baths,sqft,street,zipcode,city_name,state_name,score\n', 'utf8');
+writeHomes.write('dateListed,price,imageUrl,beds,baths,sqft,street,zipcode,city_name,state_name,score,realtor,decreased,new_home\n', 'utf8');
 
 function getRandomInt(min, max) {
   return faker.random.number({
@@ -16,23 +16,26 @@ function writeTenMillionHomes(writer, encoding, callback) {
   function write() {
     let ok = true;
     do {
-      if (i % 50000) {
+      if (i % 50000 === 0) {
         console.log(`${i} records left to write!`);
       }
       i -= 1;
-      const dateListed = faker.date.past();
+      const dateListed = faker.date.past().toISOString();
       const imageIndex = i % 333; //number photos in s3
       const imageUrl = `https://fec-house-photos.s3-us-west-1.amazonaws.com/${imageIndex}.jpg`;
       const beds = getRandomInt(1, 10);
       const baths = getRandomInt(1, 10);
       const sqft = (beds + baths) * getRandomInt(200, 600);
-      const price = sqft * getRandomInt(100, 800),
+      const price = sqft * getRandomInt(100, 800);
       const street = faker.address.streetAddress();
-      const zipcode = faker.address.zipCode();
+      const zipcode = faker.address.zipCode('#####');
       const city_name = faker.address.city();
       const state_name = faker.address.stateAbbr();
-      const score = price * sqft;
-      const data = `${dateListed},${price},${imageUrl},${beds},${baths},${sqft},${street},${zipcode},${city_name},${state_name},${score}\n`;
+      const score = Math.floor((price * sqft) / 1000000);
+      const realtor = faker.name.findName();
+      const decreased = faker.random.boolean();
+      const newHome = faker.random.boolean();
+      const data = `${dateListed},${price},${imageUrl},${beds},${baths},${sqft},${street},${zipcode},${city_name},${state_name},${score},${realtor},${decreased},${newHome}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
@@ -47,9 +50,9 @@ function writeTenMillionHomes(writer, encoding, callback) {
       writer.once('drain', write);
     }
   }
-write()
+  write();
 }
 
-writeTenMillionUsers(writeHomes, 'utf-8', () => {
+writeTenMillionHomes(writeHomes, 'utf-8', () => {
   writeHomes.end();
 });
