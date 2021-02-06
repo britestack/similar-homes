@@ -63,7 +63,7 @@
       - response code (success): `200`
       - response body: `[ { user info } ]`
       
-#### `DELETE` api/user/:userid
+#### `DELETE` api/users/:userid
   Remove user from the database
   - `request` 
      - request params: `{ userid: int }`
@@ -96,7 +96,7 @@
       - response code (success): `204`
       - response body: `[ {home1 info},..., {homeN info} ]`  (N <= 20)
       
-#### `POST` /api/home
+#### `POST` /api/homes
   Add new home to database
   - `request` 
       - request body: `{ home info }`
@@ -112,7 +112,7 @@
       - response code (success): `200`
       - response body: `[ { home info } ]`
 
-#### `DELETE` api/home/:homeid
+#### `DELETE` api/homes/:homeid
   Remove home from the database
   - `request` 
      - request params: `{ homeid: int }`
