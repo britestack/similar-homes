@@ -47,10 +47,10 @@
   - `response`
       - response code (success): `201`     
 
-#### `PATCH` /api/userSaves/:homeid
+#### `PATCH` /api/userSaves
   Updates whether a home has been saved by a user
   - `request` 
-      - request body: `{ saved: boolean }`
+      - request body: `{ user_id: int, home_id, saved: boolean }`
   - `response`
       - response code (success): `200`
       
