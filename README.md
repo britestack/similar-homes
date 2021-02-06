@@ -50,7 +50,7 @@
 #### `PATCH` /api/userSaves
   Updates whether a home has been saved by a user
   - `request` 
-      - request body: `{ user_id: int, home_id, saved: boolean }`
+      - request body: `{ user_id: int, home_id: int, saved: boolean }`
   - `response`
       - response code (success): `200`
       
