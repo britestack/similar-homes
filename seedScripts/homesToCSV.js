@@ -2,7 +2,7 @@ const faker = require('faker');
 const fs = require('fs');
 
 const writeHomes = fs.createWriteStream('homes.csv');
-writeHomes.write('dateListed,price,imageUrl,beds,baths,sqft,street,zipcode,city_name,state_name,score,realtor,decreased,new_home\n', 'utf8');
+writeHomes.write('dateListed,price,imageUrl,beds,baths,sqft,street,zipcode,city_name,state_name,score,realtor,decreased\n', 'utf8');
 
 function getRandomInt(min, max) {
   return faker.random.number({
@@ -13,6 +13,7 @@ function getRandomInt(min, max) {
 
 function writeTenMillionHomes(writer, encoding, callback) {
   let i = 10000000;
+  console.log('getting started, ', i);
   function write() {
     let ok = true;
     do {
@@ -20,7 +21,11 @@ function writeTenMillionHomes(writer, encoding, callback) {
         console.log(`${i} records left to write!`);
       }
       i -= 1;
-      const dateListed = faker.date.past().toISOString();
+      const year = getRandomInt(2000, 2021);
+      const month = getRandomInt(1, 12);
+      // may make some futuristic homes! woops
+      const day = getRandomInt(1, 28);
+      const dateListed = (year * 10000) + (month * 100) + day;
       const imageIndex = i % 333; //number photos in s3
       const imageUrl = `https://fec-house-photos.s3-us-west-1.amazonaws.com/${imageIndex}.jpg`;
       const beds = getRandomInt(1, 10);
@@ -34,8 +39,7 @@ function writeTenMillionHomes(writer, encoding, callback) {
       const score = Math.floor((price * sqft) / 1000000);
       const realtor = faker.name.findName();
       const decreased = faker.random.boolean();
-      const newHome = faker.random.boolean();
-      const data = `${dateListed},${price},${imageUrl},${beds},${baths},${sqft},${street},${zipcode},${city_name},${state_name},${score},${realtor},${decreased},${newHome}\n`;
+      const data = `${dateListed},${price},${imageUrl},${beds},${baths},${sqft},${street},${zipcode},${city_name},${state_name},${score},${realtor},${decreased}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
