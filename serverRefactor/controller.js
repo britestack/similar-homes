@@ -86,9 +86,16 @@ module.exports = {
     // get updated home info from req.body
     // return success code of 200
     // return home info
+    const { homeid } = req.params;
+    const { datelisted, price, imageUrl, beds, baths, sqft, street, zipcode, city_name, state_name, score, realtor, decreased } = req.body;
+    const queryString = `UPDATE homes SET (datelisted, price, imageurl, beds, baths, sqft, street, zipcode, city_name, state_name, score, realtor, decreased) = (${datelisted}, ${price}, '${imageUrl}', ${beds}, ${baths}, ${sqft}, '${street}', ${zipcode}, '${city_name}', '${state_name}', ${score}, '${realtor}', ${decreased}) WHERE home_id = ${homeid}`;
+    queryConnection(queryString, res, 200);
   },
   removeHome: (req, res) => {
     // get homeid from req.params
     // return success code of 200
+    const { homeid } = req.params;
+    const queryString = `DELETE FROM homes WHERE home_id = ${homeid}`;
+    queryConnection(queryString, res);
   },
 };
