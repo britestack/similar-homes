@@ -1,9 +1,21 @@
 // import connection
-
+const { connection } = require('../seedScripts/index');
+const queryConnection = (queryString, response, successCode = 200, failCode = 400) => {
+  connection.query(queryString)
+    .then(({ rows }) => {
+      response.status(successCode).send(rows[0]);
+    })
+    .catch((err) => {
+      response.status(failCode).send(err);
+    });
+};
 module.exports = {
   getUserInfo: (req, res) => {
     // get userid from req.params
+    const { userid } = req.params;
+    const queryString = `SELECT * FROM users WHERE user_id = ${userid}`;
     // returns success code of 200
+    queryConnection(queryString, res);
     // returns info on user
   },
   addUser: (req, res) => {
