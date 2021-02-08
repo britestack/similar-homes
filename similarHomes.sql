@@ -5,20 +5,19 @@ CREATE DATABASE carouselhomes;
 
 CREATE TABLE homes (
   home_id serial PRIMARY KEY,
-  dateListed Date,
+  dateListed integer,
   price integer NOT NULL,
   imageUrl varchar(200),
   beds smallint,
   baths smallint,
   sqft integer NOT NULL,
   street varchar(30),
-  zipcode varchar(10) NOT NULL,
+  zipcode INTEGER NOT NULL,
   city_name varchar(30),
   state_name varchar(2),
   score integer,
   realtor varchar(40),
-  decreased boolean,
-  new_home boolean
+  decreased boolean
 );
 
 CREATE TABLE similarHomes (
@@ -35,9 +34,9 @@ CREATE TABLE newNearHomes (
 
 CREATE TABLE users (
   user_id serial PRIMARY KEY,
-  username varchar(24),
-  pword varchar(24),
-  email varchar(50)
+  username varchar(80),
+  pword varchar(80),
+  email varchar(80)
 );
 
 CREATE TABLE userSaves (
@@ -48,3 +47,4 @@ CREATE TABLE userSaves (
 
 CREATE INDEX zip_score_index ON homes(zipcode) INCLUDE (score);
 CREATE INDEX zip_date_index ON homes(zipcode) INCLUDE (dateListed);
+CREATE INDEX date_index ON homes(datelisted) INCLUDE (home_id, zipcode);

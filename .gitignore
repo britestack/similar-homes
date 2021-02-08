@@ -23,3 +23,10 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
+
+#csv files
+homes.csv
+users.csv
+newnear.csv
+similar.csv
+userSaves.csv
