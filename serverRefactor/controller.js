@@ -6,6 +6,7 @@ const queryConnection = (queryString, response, successCode = 200, failCode = 40
       response.status(successCode).send(rows[0]);
     })
     .catch((err) => {
+      console.log(err);
       response.status(failCode).send(err);
     });
 };
@@ -21,6 +22,9 @@ module.exports = {
   addUser: (req, res) => {
     // get new user info from req.body
     // returns success code of 201
+    const { username, pword, email } = req.body;
+    const queryString = `INSERT INTO users(username, pword, email) VALUES('${username}', '${pword}', '${email}')`;
+    queryConnection(queryString, res, 201);
   },
   updateUserInfo: (req, res) => {
     // get userid from req.params
