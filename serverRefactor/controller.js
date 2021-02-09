@@ -68,11 +68,17 @@ module.exports = {
     // get homeid from req.params
     // return 200 (update this in api page)
     // return info on all new homes
+    const { homeid } = req.params;
+    const queryString = `SELECT home_id FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) ORDER BY datelisted DESC LIMIT 8`;
+    queryConnection(queryString, res);
   },
   getSimilarHomes: (req, res) => {
     // get homeid from req.params
     // return 200 (update this in api page)
     // return info on all similar homes
+    const { homeid } = req.params;
+    const queryString = `SELECT * FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) AND beds > ((SELECT beds FROM homes WHERE home_id = ${homeid}) - 2) AND beds < ((SELECT beds FROM homes WHERE home_id = ${homeid}) + 2) AND price > ((SELECT price FROM homes WHERE home_id = ${homeid}) * .7) AND price < ((SELECT price FROM homes WHERE home_id = ${homeid}) * 1.3);`;
+    queryConnection(queryString, res);
   },
   addHome: (req, res) => {
     // get new home info from req.body
