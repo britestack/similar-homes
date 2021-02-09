@@ -73,7 +73,7 @@ class HomeModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: props.images,
+      image: props.image,
       view: 0,
     };
     this.handleNext = this.handleNext.bind(this);
@@ -98,17 +98,16 @@ class HomeModal extends React.Component {
 
   render() {
     const { view } = this.state;
-    const { images } = this.state;
+    const { image } = this.state;
     const { handleExit } = this.props;
-    const homes = images.map((image) => (
-      <SingleHome image={image} />
-    ));
+    const homes = <SingleHome image={image} />;
+    debugger;
     return (
       ReactDOM.createPortal(
         <Container>
           <ExitModalButton handleExit={handleExit} view={view} />
-          <ModalPrev handleClick={this.handlePrev} view={view} />
-          <ModalNext handleClick={this.handleNext} view={view} />
+          {/* <ModalPrev handleClick={this.handlePrev} view={view} />
+          <ModalNext handleClick={this.handleNext} view={view} /> */}
           <ViewWrapper>
             <ViewPort>
               <CardContainer view={view}>

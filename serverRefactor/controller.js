@@ -40,7 +40,7 @@ module.exports = {
     // get userid from req.params
     // return success code of 200
     const { userid } = req.params;
-    const queryString = `DELETE FROM users WHERE user_id = ${userid} CASCADE`;
+    const queryString = `DELETE FROM users WHERE user_id = ${userid}`;
     queryConnection(queryString, res);
   },
   updateUserSave: (req, res) => {

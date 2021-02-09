@@ -92,7 +92,6 @@ class Carousel extends React.Component {
         handleExit={handleExit}
       />
     ));
-
     return (
       <div>
         <Background>

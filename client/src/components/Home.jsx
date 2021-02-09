@@ -48,19 +48,18 @@ const InfoContainer = styled.div`
 const Home = ({ home, handleClick, handleExit }) => (
   <Card>
     <ImageContainer>
-      <NewInfo isNew={home.new} />
       <Heart />
-      <HomeImageCarousel images={home.imageUrl} handleClick={handleClick} handleExit={handleExit} />
+      <HomeImageCarousel image={home.imageurl} handleClick={handleClick} handleExit={handleExit} />
     </ImageContainer>
     <InfoContainer>
       <PriceInfo price={home.price} decreased={home.decreased} />
       <BedBath>
-        <BedInfo beds={home.size.beds} />
-        <BathInfo baths={home.size.baths} />
-        <SqftInfo sqft={home.size.sqft} />
+        <BedInfo beds={home.beds} />
+        <BathInfo baths={home.baths} />
+        <SqftInfo sqft={home.sqft} />
       </BedBath>
-      <StreetAddress>{home.address.street}</StreetAddress>
-      <StreetAddress>{home.address.neighborhood}, {home.address.city}, {home.address.state}</StreetAddress>
+      <StreetAddress>{home.street}</StreetAddress>
+      <StreetAddress>{home.zipcode}, {home.city_name}, {home.state_name}</StreetAddress>
     </InfoContainer>
     <RealtorInfo realtor={home.realtor} />
   </Card>
