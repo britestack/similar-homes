@@ -3,7 +3,7 @@ const { connection } = require('../seedScripts/index');
 const queryConnection = (queryString, response, successCode = 200, failCode = 400) => {
   connection.query(queryString)
     .then(({ rows }) => {
-      response.status(successCode).send(rows[0]);
+      response.status(successCode).send(rows);
     })
     .catch((err) => {
       console.log(err);
@@ -13,11 +13,11 @@ const queryConnection = (queryString, response, successCode = 200, failCode = 40
 module.exports = {
   getUserInfo: (req, res) => {
     // get userid from req.params
+    // returns success code of 200
+    // returns info on user
     const { userid } = req.params;
     const queryString = `SELECT * FROM users WHERE user_id = ${userid}`;
-    // returns success code of 200
     queryConnection(queryString, res);
-    // returns info on user
   },
   addUser: (req, res) => {
     // get new user info from req.body
@@ -40,7 +40,7 @@ module.exports = {
     // get userid from req.params
     // return success code of 200
     const { userid } = req.params;
-    const queryString = `DELETE FROM users WHERE user_id = ${userid}`;
+    const queryString = `DELETE FROM users WHERE user_id = ${userid} CASCADE`;
     queryConnection(queryString, res);
   },
   updateUserSave: (req, res) => {
@@ -69,7 +69,7 @@ module.exports = {
     // return 200 (update this in api page)
     // return info on all new homes
     const { homeid } = req.params;
-    const queryString = `SELECT home_id FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) ORDER BY datelisted DESC LIMIT 8`;
+    const queryString = `SELECT * FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) AND home_id != ${homeid} ORDER BY datelisted DESC LIMIT 20`;
     queryConnection(queryString, res);
   },
   getSimilarHomes: (req, res) => {
@@ -77,7 +77,7 @@ module.exports = {
     // return 200 (update this in api page)
     // return info on all similar homes
     const { homeid } = req.params;
-    const queryString = `SELECT * FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) AND beds > ((SELECT beds FROM homes WHERE home_id = ${homeid}) - 2) AND beds < ((SELECT beds FROM homes WHERE home_id = ${homeid}) + 2) AND price > ((SELECT price FROM homes WHERE home_id = ${homeid}) * .7) AND price < ((SELECT price FROM homes WHERE home_id = ${homeid}) * 1.3);`;
+    const queryString = `SELECT * FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) AND beds > ((SELECT beds FROM homes WHERE home_id = ${homeid}) - 2) AND beds < ((SELECT beds FROM homes WHERE home_id = ${homeid}) + 2) AND price > ((SELECT price FROM homes WHERE home_id = ${homeid}) * .71) AND price < ((SELECT price FROM homes WHERE home_id = ${homeid}) * 1.4) AND home_id != ${homeid}`;
     queryConnection(queryString, res);
   },
   addHome: (req, res) => {
