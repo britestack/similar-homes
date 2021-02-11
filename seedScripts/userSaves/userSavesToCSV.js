@@ -16,7 +16,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
   let i = 10000000;
   function write() {
     let ok = true;
-    let user_id = 1;
+    let user_id = 20000002;
     do {
       if (i % 50000 === 0) {
         console.log(`${i} records left to write!`);

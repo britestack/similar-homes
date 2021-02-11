@@ -40,7 +40,7 @@ class HomeImageCarousel extends React.Component {
     super(props);
     this.state = {
       showModal: false,
-      images: props.images,
+      image: props.image,
       view: 0,
     };
     this.displayModal = this.displayModal.bind(this);
@@ -68,11 +68,11 @@ class HomeImageCarousel extends React.Component {
     return (
       <div>
         {showModal ? (
-          <HomeModal images={this.state.images} handleExit={this.removeModal} />
+          <HomeModal image={this.state.image} handleExit={this.removeModal} />
         ) : null}
         <HomeImageContainer onClick={this.displayModal}>
           {/* <NextButton handleClick={() => {}} view={1} /> */}
-          <HomeImage src={this.state.images[this.state.view]} alt="missing" />
+          <HomeImage src={this.state.image} alt="missing" />
         </HomeImageContainer>
       </div>
     );

@@ -34,14 +34,14 @@ class App extends React.Component {
   }
 
   getHomes() {
-    this.getNearbyHomes();
     this.getSimilarHomes();
+    this.getNearbyHomes();
   }
 
   getNearbyHomes() {
     const app = this;
     // const { _id } = this.state;
-    axios.get(`${API_URL}/nearby`)
+    axios.get(`${API_URL}/new/1000`)
       .then((results) => {
         app.setState({
           nearCarousel: results.data,
@@ -53,7 +53,7 @@ class App extends React.Component {
   getSimilarHomes() {
     const app = this;
     // const { _id } = this.state;
-    axios.get(`${API_URL}/similar`)
+    axios.get(`${API_URL}/similar/1000`)
       .then((results) => {
         app.setState({
           similarCarousel: results.data,
@@ -79,7 +79,6 @@ class App extends React.Component {
     const { similarCarousel } = this.state;
     const { nearCarousel } = this.state;
     const { showModal } = this.state;
-
     if (similarCarousel.length === 0 || nearCarousel.length === 0) {
       return (<div />);
     }

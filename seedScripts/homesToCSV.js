@@ -12,7 +12,7 @@ function getRandomInt(min, max) {
 }
 
 function writeTenMillionHomes(writer, encoding, callback) {
-  let i = 10000000;
+  let i = 1000000;
   console.log('getting started, ', i);
   function write() {
     let ok = true;
