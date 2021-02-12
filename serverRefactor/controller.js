@@ -69,6 +69,7 @@ module.exports = {
     // return 200 (update this in api page)
     // return info on all new homes
     const { homeid } = req.params;
+	 // console.log('home: ', homeid);
     const queryString = `SELECT * FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) AND home_id != ${homeid} ORDER BY datelisted DESC LIMIT 20`;
     queryConnection(queryString, res);
   },
@@ -77,7 +78,7 @@ module.exports = {
     // return 200 (update this in api page)
     // return info on all similar homes
     const { homeid } = req.params;
-    const queryString = `SELECT * FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) AND beds > ((SELECT beds FROM homes WHERE home_id = ${homeid}) - 2) AND beds < ((SELECT beds FROM homes WHERE home_id = ${homeid}) + 2) AND price > ((SELECT price FROM homes WHERE home_id = ${homeid}) * .71) AND price < ((SELECT price FROM homes WHERE home_id = ${homeid}) * 1.4) AND home_id != ${homeid}`;
+    const queryString = `SELECT * FROM homes WHERE zipcode IN (SELECT zipcode FROM homes WHERE home_id = ${homeid}) AND beds > ((SELECT beds FROM homes WHERE home_id = ${homeid}) - 3) AND beds < ((SELECT beds FROM homes WHERE home_id = ${homeid}) + 3) AND price > ((SELECT price FROM homes WHERE home_id = ${homeid}) * .5) AND price < ((SELECT price FROM homes WHERE home_id = ${homeid}) * 2) AND home_id != ${homeid}`;
     queryConnection(queryString, res);
   },
   addHome: (req, res) => {
