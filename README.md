@@ -1,5 +1,8 @@
 # Similar Homes Photo Carousel
 
+## Component  
+<img src="sdcmain.png" alt="mainpic" width="700"/>
+
 ## API Endpoints
 
 #### KEY:
